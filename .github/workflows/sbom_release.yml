@@ -34,25 +34,6 @@ jobs:
         id: get_tag
         run: echo "LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo 'v0.0.1')" >> $GITHUB_ENV
 
-      # - name: Set up Python
-      #   uses: actions/setup-python@v4
-      #   with:
-      #     python-version: "3.x" # Specify the Python version needed
-
-      # - name: Checkout Python SBOM tool
-      #   run: |
-      #     git clone https://github.com/interlynk-io/pylynk.git ${{ env.PYLYNK_TEMP_DIR }}
-      #     cd ${{ env.PYLYNK_TEMP_DIR }}
-      #     git fetch --tags
-      #     latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
-      #     git checkout $latest_tag
-      #     echo "Checked out pylynk at tag: $latest_tag"
-
-      # - name: Install Python dependencies
-      #   run: |
-      #     cd ${{ env.PYLYNK_TEMP_DIR }}
-      #     pip install -r requirements.txt
-
       - name: Generate SBOM
         shell: bash
         run: |
